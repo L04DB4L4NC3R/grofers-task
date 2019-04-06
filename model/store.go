@@ -1,6 +1,12 @@
 package model
 
-import "log"
+import (
+	"log"
+
+	"github.com/angadsharma1016/grofers-task/pb"
+	"github.com/gogo/protobuf/proto"
+	nats "github.com/nats-io/go-nats"
+)
 
 func (s *Store) PutValue(c chan error) {
 	res, err := con.Exec("INSERT INTO STORE VALUES(?, ?)", s.Key, s.Value)
@@ -43,4 +49,16 @@ func GetAllValues(c chan StoreReturn) {
 
 	c <- StoreReturn{storeArr, nil}
 	return
+}
+
+func (s Store) Publish(subject string, con *nats.Conn) {
+	store := pb.Store{
+		Key:   s.Key,
+		Value: s.Value,
+	}
+	data, err := proto.Marshal(&store)
+	if err != nil {
+		log.Println("Error publishing event", err.Error())
+	}
+	con.Publish(subject, data)
 }
