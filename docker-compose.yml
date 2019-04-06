@@ -15,17 +15,6 @@ services:
       MYSQL_DATABASE: "${MYSQL_DATABASE}"
     ports:
     - 3306:3306
-  grofers-api:
-    build: .
-    container_name: grofers-api
-    ports: 
-      - 3000:3000
-    volumes:
-      - .:/go/src/github.com/angadsharma1016/grofers-task
-    depends_on:
-      - db
-    env_file: ./.env
-    restart: on-failure
   nats:
     container_name: nats
     image: nats

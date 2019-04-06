@@ -13,12 +13,13 @@ type server struct {
 }
 
 func (s *server) SetupNats() {
-	nc, _ := nats.Connect("nats:4222")
+	nc, _ := nats.Connect(nats.DefaultURL)
 	nec, err := nats.NewEncodedConn(nc, nats.JSON_ENCODER)
 	if err != nil {
 		log.Fatalln(err)
 	}
 	s.NatsCon = nec
+	log.Println("Connected to NATS")
 }
 
 func main() {

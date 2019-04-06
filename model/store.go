@@ -1,7 +1,7 @@
 package model
 
 import (
-	"log"
+	"fmt"
 
 	"github.com/angadsharma1016/grofers-task/pb"
 	"github.com/gogo/protobuf/proto"
@@ -14,7 +14,7 @@ func (s *Store) PutValue(c chan error) {
 		c <- err
 		return
 	}
-	log.Println(res.RowsAffected())
+	fmt.Println(res.RowsAffected())
 	c <- nil
 	return
 }
@@ -58,7 +58,8 @@ func (s Store) Publish(subject string, con *nats.Conn) {
 	}
 	data, err := proto.Marshal(&store)
 	if err != nil {
-		log.Println("Error publishing event", err.Error())
+		fmt.Println("Error publishing event", err.Error())
 	}
 	con.Publish(subject, data)
+	fmt.Println("Published event")
 }
