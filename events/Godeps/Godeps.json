@@ -1,0 +1,54 @@
+{
+	"ImportPath": "github.com/angadsharma1016/grofers-task/events",
+	"GoVersion": "go1.11",
+	"GodepVersion": "v80",
+	"Deps": [
+		{
+			"ImportPath": "github.com/angadsharma1016/grofers-task/pb",
+			"Rev": "72c0ab8333ae06c86f511238a6903cf354540417"
+		},
+		{
+			"ImportPath": "github.com/gogo/protobuf/proto",
+			"Comment": "v1.2.0-38-g8e4a75f",
+			"Rev": "8e4a75f11384d0fb2188d872d456407e41f33fc0"
+		},
+		{
+			"ImportPath": "github.com/golang/protobuf/proto",
+			"Comment": "v1.3.0-2-gb5d812f",
+			"Rev": "b5d812f8a3706043e23a9cd5babf2e5423744d30"
+		},
+		{
+			"ImportPath": "github.com/nats-io/go-nats",
+			"Comment": "v1.7.0-24-gefdce8e",
+			"Rev": "efdce8eefcb76a7d2209d3f135d43f3ccec89c7a"
+		},
+		{
+			"ImportPath": "github.com/nats-io/go-nats/encoders/builtin",
+			"Comment": "v1.7.0-24-gefdce8e",
+			"Rev": "efdce8eefcb76a7d2209d3f135d43f3ccec89c7a"
+		},
+		{
+			"ImportPath": "github.com/nats-io/go-nats/util",
+			"Comment": "v1.7.0-24-gefdce8e",
+			"Rev": "efdce8eefcb76a7d2209d3f135d43f3ccec89c7a"
+		},
+		{
+			"ImportPath": "github.com/nats-io/nkeys",
+			"Comment": "v0.0.2",
+			"Rev": "1546a3320a8f195a5b5c84aef8309377c2e411d5"
+		},
+		{
+			"ImportPath": "github.com/nats-io/nuid",
+			"Comment": "v1.0.0-8-g3024a71",
+			"Rev": "3024a71c3cbe30667286099921591e6fcc328230"
+		},
+		{
+			"ImportPath": "golang.org/x/crypto/ed25519",
+			"Rev": "505ab145d0a99da450461ae2c1a9f6cd10d1f447"
+		},
+		{
+			"ImportPath": "golang.org/x/crypto/ed25519/internal/edwards25519",
+			"Rev": "505ab145d0a99da450461ae2c1a9f6cd10d1f447"
+		}
+	]
+}
