@@ -23,3 +23,13 @@ func ConnectDB() *sql.DB {
 	con = db
 	return con
 }
+
+type Store struct {
+	Key   string `json:"key"`
+	Value string `json:"value"`
+}
+
+type StoreReturn struct {
+	Stores []Store `json:"stores"`
+	Err    error   `json:"err"`
+}
