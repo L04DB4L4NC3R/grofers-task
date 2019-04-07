@@ -17,8 +17,6 @@ func ConnectDB() *sql.DB {
 		log.Println("Error connecting to DB")
 		os.Exit(1)
 	}
-	log.Println("Connected to DB")
-
 	con = db
 	return db
 }

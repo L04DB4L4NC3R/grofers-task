@@ -9,12 +9,11 @@ import (
 )
 
 func (s *Store) PutValue(c chan error) {
-	res, err := con.Exec("INSERT INTO STORE VALUES(?, ?)", s.Key, s.Value)
+	_, err := con.Exec("INSERT INTO STORE VALUES(?, ?)", s.Key, s.Value)
 	if err != nil {
 		c <- err
 		return
 	}
-	fmt.Println(res.RowsAffected())
 	c <- nil
 	return
 }

@@ -1,6 +1,7 @@
 package main
 
 import (
+	"database/sql"
 	"log"
 
 	"github.com/joho/godotenv"
@@ -13,6 +14,7 @@ import (
 
 type server struct {
 	NatsCon *nats.EncodedConn
+	DBCon   *sql.DB
 }
 
 func (s *server) SetupNats() {
@@ -22,10 +24,12 @@ func (s *server) SetupNats() {
 		log.Fatalln(err)
 	}
 	s.NatsCon = nec
-	log.Println("Connected to NATS")
 }
 
 func main() {
+
+	// setup a server instance
+	var s server
 
 	// load env config
 	if err := godotenv.Load(); err != nil {
@@ -33,11 +37,8 @@ func main() {
 	}
 
 	// connect to MySQL
-	db := model.ConnectDB()
-	defer db.Close()
-
-	// setup a server instance
-	var s server
+	s.DBCon = model.ConnectDB()
+	defer s.DBCon.Close()
 
 	// connect to NATS
 	s.SetupNats()
@@ -45,4 +46,5 @@ func main() {
 
 	// register the CLI
 	cli.RegisterCLI(s.NatsCon)
+
 }

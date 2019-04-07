@@ -22,4 +22,3 @@ services:
       - 4222:4222 # for clients
       - 8222:8222 # HTTP management port for reporting
       - 6222:6222 # routing port for clustering
-
