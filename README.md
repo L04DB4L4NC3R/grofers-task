@@ -28,7 +28,7 @@ grof CLI, modern key value manager
 
 [How to build from source](#build)
 
-[Secrets custom setup](#secrets)
+[How to setup custom secrets](#secrets)
 
 [file structure overview](#fs)
 
@@ -69,6 +69,8 @@ grof CLI, modern key value manager
 * Publishing events on a different thread and subscribing from a different thread allows non-blocking log sourcing.
 
 * NATS is very high throughput when it comes to requests per second
+
+<a href = "#index" ><img src="./images/arrow.png" width=2%> </a>
 
 <br />
 
@@ -148,7 +150,7 @@ sudo cp ./bin/grof /use/local/bin/grof
 <br/>
 
 ### <a id="secrets"></a>How to setup custom secrets
-Make sure you have a .env file in your project root with the following fields.
+Make sure you have a .env file in your project root with the following fields. You can edit any field in .env and run `docker-compose build` for custom secrets.
 
 | Key | Value |
 |:---:|:-----:|
@@ -157,9 +159,6 @@ Make sure you have a .env file in your project root with the following fields.
 | MYSQL_PASSWORD | The password for your user |
 | MYSQL_DATABASE | The database to use in MySQL |
 
-
-
-<a href = "#index" ><img src="./images/arrow.png" width=2%> </a>
 
 
 <a href = "#index" ><img src="./images/arrow.png" width=2%> </a>
