@@ -20,7 +20,7 @@ func (s *Store) PutValue(c chan error) {
 }
 
 func (s *Store) GetValue(c chan error) {
-	row := con.QueryRow("SELECT value FROM STORE WHERE key = ?", s.Key)
+	row := con.QueryRow("SELECT v FROM STORE WHERE k = ?", s.Key)
 	if err := row.Scan(&s.Value); err != nil {
 		c <- err
 		return
@@ -32,7 +32,7 @@ func (s *Store) GetValue(c chan error) {
 func GetAllValues(c chan StoreReturn) {
 
 	var storeArr []Store
-	rows, err := con.Query("SELECT key, value FROM STORE WHERE")
+	rows, err := con.Query("SELECT k, v FROM STORE WHERE")
 	if err != nil {
 		c <- StoreReturn{nil, err}
 		return

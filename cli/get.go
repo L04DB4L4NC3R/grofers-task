@@ -19,13 +19,13 @@ func getHandler() {
 	if err := <-c; err != nil {
 		if err == sql.ErrNoRows {
 			fmt.Println("No values found for key: ", s.Key)
-			return
+			os.Exit(0)
 		}
 
 		fmt.Println(err.Error())
-		return
+		os.Exit(1)
 
 	}
 	fmt.Println(s.Value)
-	return
+	os.Exit(0)
 }

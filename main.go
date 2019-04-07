@@ -45,5 +45,4 @@ func main() {
 
 	// register the CLI
 	cli.RegisterCLI(s.NatsCon)
-	select {}
 }
