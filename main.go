@@ -1,7 +1,6 @@
 package main
 
 import (
-	"database/sql"
 	"log"
 
 	"github.com/joho/godotenv"
@@ -9,16 +8,10 @@ import (
 	"github.com/angadsharma1016/grofers-task/cli"
 	"github.com/angadsharma1016/grofers-task/model"
 	_ "github.com/go-sql-driver/mysql" // mysql driver
+	_ "github.com/rs/cors"             // for godep cors
 )
 
-type server struct {
-	DBCon *sql.DB
-}
-
 func main() {
-
-	// setup a server instance
-	var s server
 
 	// load env config
 	if err := godotenv.Load(); err != nil {
@@ -26,8 +19,8 @@ func main() {
 	}
 
 	// connect to MySQL
-	s.DBCon = model.ConnectDB()
-	defer s.DBCon.Close()
+	db := model.ConnectDB()
+	defer db.Close()
 
 	// register the CLI
 	cli.RegisterCLI()

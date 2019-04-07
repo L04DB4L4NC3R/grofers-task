@@ -22,3 +22,18 @@ services:
       - 4222:4222 # for clients
       - 8222:8222 # HTTP management port for reporting
       - 6222:6222 # routing port for clustering
+  grof-api:
+    container_name: grof-api
+    build: .
+    ports:
+      - 3000:3000
+    env_file: ./.env
+    environment:
+      MYSQL_USER: "${MYSQL_USER}"
+      MYSQL_PASSWORD: "${MYSQL_PASSWORD}"
+      MYSQL_DATABASE: "${MYSQL_DATABASE}"
+    volumes:
+      - .:/go/src/github.com/angadsharma1016/grofers-task
+    depends_on:
+      - db
+      - nats

@@ -49,6 +49,11 @@
 			"Rev": "3024a71c3cbe30667286099921591e6fcc328230"
 		},
 		{
+			"ImportPath": "github.com/rs/cors",
+			"Comment": "v1.6.0-2-g76f58f3",
+			"Rev": "76f58f330d76a55c5badc74f6212e8a15e742c77"
+		},
+		{
 			"ImportPath": "golang.org/x/crypto/ed25519",
 			"Rev": "505ab145d0a99da450461ae2c1a9f6cd10d1f447"
 		},
