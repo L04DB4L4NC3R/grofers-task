@@ -20,6 +20,8 @@ grof CLI, modern key value manager
 
 [Why nats](#nats)
 
+[How to setup](#setup)
+
 [How to run](#run)
 
 [How to stop](#stop)
@@ -81,6 +83,7 @@ grof CLI, modern key value manager
 <br/>
 
 ### <a id="setup"></a>How to setup
+`Note`: For ease, a sample .env has been pushed with the repo
 
 ```
 $ git clone https://github.com/angadsharma1016/grofers-task.git && cd grofers-task
