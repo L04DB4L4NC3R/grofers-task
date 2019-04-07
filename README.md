@@ -26,6 +26,8 @@ grof CLI, modern key value manager
 
 [How to build from source](#build)
 
+[Secrets custom setup](#secrets)
+
 [file structure overview](#fs)
 
 [file structure tree](#tree)
@@ -77,7 +79,6 @@ grof CLI, modern key value manager
 
 <br/>
 <br/>
-
 
 ### <a id="setup"></a>How to setup
 
@@ -138,6 +139,25 @@ If you want to build from source simple do the following
 go build -o ./bin/grof ./main.go 
 sudo cp ./bin/grof /use/local/bin/grof
 ```
+
+
+<br/>
+<br/>
+
+### <a id="secrets"></a>How to setup custom secrets
+Make sure you have a .env file in your project root with the following fields.
+
+| Key | Value |
+|:---:|:-----:|
+| MYSQL_ROOT_PASSWORD | your root password for MySQL |
+| MYSQL_USER | your user for the database |
+| MYSQL_PASSWORD | The password for your user |
+| MYSQL_DATABASE | The database to use in MySQL |
+
+
+
+<a href = "#index" ><img src="./images/arrow.png" width=2%> </a>
+
 
 <a href = "#index" ><img src="./images/arrow.png" width=2%> </a>
 
