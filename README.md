@@ -1,21 +1,50 @@
 ### Grofers task
-grof CLI
+grof CLI, modern key value manager
 
 <br/>
 
 [![](https://img.shields.io/badge/docs%20-view%20API%20documentation-orange.svg?style=for-the-badge&logo=appveyor)](https://angadsharma1016.github.io/grofers-task/)
 
 
-[![demo](https://img.shields.io/badge/view%20demo-youtube-orange.svg?style=for-the-badge&logo=appveyor)]()
+[![demo](https://img.shields.io/badge/view%20demo-youtube-orange.svg?style=for-the-badge&logo=appveyor)](https://youtu.be/7RiZiqKRWkk)
 
 <br/>
 <br/>
 
+---
+## <a id="index"></a>Index
+
+<br/>
+
+[Technology stack used](#tech)
+
+[Why nats](#nats)
+
+[How to run](#run)
+
+[How to stop](#stop)
+
+[How to build from source](#build)
+
+[file structure overview](#fs)
+
+[file structure tree](#tree)
+
+---
 
 
-<details>
 
-<summary>Technology stack used</summary>
+<br/>
+<br/>
+<br/>
+
+
+
+
+
+<details open>
+
+<summary id="tech">Technology stack used</summary>
 
 <br/>
 
@@ -25,7 +54,7 @@ grof CLI
 - [X] bash scripts
 - [X] apidoc documentation
 
-### Why NATS?
+### <a id="nats"></a>Why NATS?
 ---
 [NATS](https://github.com/nats-io/go-nats.git) is an event sourcing tool which we will be using to publish logs and distribute related data between different services. The reason for NATS is:
 
@@ -44,11 +73,13 @@ grof CLI
 <br />
 </details>
 
+<a href = "#index" ><img src="./images/arrow.png" width=2%> </a>
+
 <br/>
 <br/>
 
 
-### How to setup
+### <a id="setup"></a>How to setup
 
 ```
 $ git clone https://github.com/angadsharma1016/grofers-task.git && cd grofers-task
@@ -57,13 +88,14 @@ $ chmod +x ./bin/*
 
 $ ./bin/setup
 ```
+<a href = "#index" ><img src="./images/arrow.png" width=2%> </a>
 
 Wait for config after ./bin/setup, you can use `docker-compose logs -f` to monitor changes.
 
 <br/>
 <br/>
 
-### How to run
+### <a id="run"></a> How to run
 
 ```
 $ grof
@@ -84,14 +116,95 @@ grof update [key] [new value] -------------> Update DB with new value
 grof watch --------------------------------> Subscribe to changes in DB
 grof watch --------------------------------> Watch for realtime DB changes
 ```
+<a href = "#index" ><img src="./images/arrow.png" width=2%> </a>
+
+
+<br/>
+
+### <a id="stop"></a> How to stop
+To kill the server, database and messaging service simple do
+
+```
+./bin/clean
+```
 
 <br/>
 <br/>
 
-### How to build from source
+### <a id="build"></a> How to build from source
 If you want to build from source simple do the following
 
 ```
 go build -o ./bin/grof ./main.go 
 sudo cp ./bin/grof /use/local/bin/grof
 ```
+
+<a href = "#index" ><img src="./images/arrow.png" width=2%> </a>
+
+<br/>
+<br/>
+
+
+<details open>
+
+<summary id="fs">File structure explanation</summary>
+
+* `server/`: Has the API for key value CRUD operations while publishing events
+* `pb/`: Describes the protocol buffer struture for event communication
+* `model/`: Has all of the MySQL connection logic and CRUD functions
+* `cli/`: Registers os ARGS and decides which function to call
+* `./cli/watch.go`: Subscribes to an event and then waits indefinately
+* `./cli/*`: CRUD operations on SQL, and with each operation, an event is published unique to the o/p
+* `bin/`: Has all of the compiled code and bash executables
+* `vendor`: Godeps vendor, has all of the vendored code
+* `docs/`: Has docs generated with the apidoc CLI
+* `./server/apidoc.json`: apidoc config for docs generation
+
+
+<a href = "#index" ><img src="./images/arrow.png" width=2%> </a>
+
+<br/>
+
+### <a id="tree"></a>File structure tree
+```
+.
+├── bin/
+│   ├── clean*
+│   ├── grof*
+│   └── setup*
+├── cli/
+│   ├── delete.go
+│   ├── get.go
+│   ├── put.go
+│   ├── register.go
+│   ├── update.go
+│   └── watch.go
+├── docker-compose.yml
+├── Dockerfile
+├── Godeps/
+│   ├── Godeps.json
+│   └── Readme
+├── images/
+│   └── nats.png
+├── main.go
+├── model/
+│   ├── conn.go
+│   ├── Dockerfile
+│   ├── setup.sql
+│   └── store.go
+├── pb/
+│   ├── store.pb.go
+│   └── store.proto
+├── README.md
+├── server/
+    ├── apidoc.json
+    ├── controller/
+    │   ├── delete.go
+    │   ├── get.go
+    │   ├── put.go
+    │   ├── router.go
+    │   └── update.go
+    └── main.go
+```
+</details>
+<a href = "#index" ><img src="./images/arrow.png" width=2%> </a>
