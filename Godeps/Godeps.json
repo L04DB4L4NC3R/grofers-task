@@ -19,6 +19,11 @@
 			"Rev": "b5d812f8a3706043e23a9cd5babf2e5423744d30"
 		},
 		{
+			"ImportPath": "github.com/joho/godotenv",
+			"Comment": "v1.3.0-5-g69ed1d9",
+			"Rev": "69ed1d913aa885da390dd6de9febf063d101b097"
+		},
+		{
 			"ImportPath": "github.com/nats-io/go-nats",
 			"Comment": "v1.7.0-24-gefdce8e",
 			"Rev": "efdce8eefcb76a7d2209d3f135d43f3ccec89c7a"
