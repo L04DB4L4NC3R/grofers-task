@@ -15,7 +15,7 @@ grof CLI
 
 <details>
 
-<summary>Technology stack</summary>
+<summary>Technology stack used</summary>
 
 <br/>
 
@@ -83,4 +83,15 @@ grof delete [key] -------------------------> Delete from DB
 grof update [key] [new value] -------------> Update DB with new value
 grof watch --------------------------------> Subscribe to changes in DB
 grof watch --------------------------------> Watch for realtime DB changes
+```
+
+<br/>
+<br/>
+
+### How to build from source
+If you want to build from source simple do the following
+
+```
+go build -o ./bin/grof ./main.go 
+sudo cp ./bin/grof /use/local/bin/grof
 ```
