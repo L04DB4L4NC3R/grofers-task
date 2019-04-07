@@ -7,10 +7,12 @@ import (
 	"github.com/angadsharma1016/grofers-task/model"
 	"github.com/angadsharma1016/grofers-task/pb"
 	"github.com/gogo/protobuf/proto"
+	nats "github.com/nats-io/go-nats"
 )
 
 func putHandler() {
 
+	// create key value struct and save to DB
 	s := &model.Store{
 		Key:   os.Args[2],
 		Value: os.Args[3],
@@ -25,7 +27,14 @@ func putHandler() {
 	}
 	fmt.Printf("Created key = %s and value = %s\n", s.Key, s.Value)
 
-	// publish event
+	// connect to NATS
+	natsConn, err := nats.Connect(nats.DefaultURL)
+	if err != nil {
+		fmt.Println("Error connecting to messaging service")
+		os.Exit(1)
+	}
+
+	// create a protobuf instance and marshal it
 	store := pb.Store{
 		Key:   s.Key,
 		Value: s.Value,
@@ -35,9 +44,13 @@ func putHandler() {
 		fmt.Println("Error unmarshalling to protobuf: ", err.Error())
 		os.Exit(1)
 	}
-	if err = conn.Publish("PUT", data); err != nil {
+
+	// publish protobuf in the PUT event
+	if err = natsConn.Publish("PUT", data); err != nil {
 		fmt.Println("Error publishing event: ", err.Error())
 		os.Exit(1)
 	}
+
+	natsConn.Close()
 	os.Exit(0)
 }

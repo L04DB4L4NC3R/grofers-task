@@ -1,0 +1,4 @@
+#!/bin/bash
+
+docker-compose up -d
+sudo cp ./bin/grof /usr/local/bin/grof
