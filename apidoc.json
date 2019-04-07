@@ -1,0 +1,11 @@
+{
+    "name": "Grofers task documentation",
+    "version": "0.1.0",
+    "description": "For the grofers",
+    "title": "docs",
+    "url":"http://localhost:3000/api/v1",
+    "template": {
+        "withCompare": true,
+        "withGenerator": true
+    }
+}

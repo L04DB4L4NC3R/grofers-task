@@ -1,4 +1,3 @@
 #!/bin/bash
 
-docker container stop db nats
-docker container rm db nats
+docker-compose down
