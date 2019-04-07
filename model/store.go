@@ -19,7 +19,7 @@ func (s *Store) PutValue(c chan error) {
 	return
 }
 
-func (s Store) GetValue(c chan error) {
+func (s *Store) GetValue(c chan error) {
 	row := con.QueryRow("SELECT value FROM STORE WHERE key = ?", s.Key)
 	if err := row.Scan(&s.Value); err != nil {
 		c <- err
