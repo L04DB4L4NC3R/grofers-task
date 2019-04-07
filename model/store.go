@@ -58,3 +58,18 @@ func (s *Store) UpdateValue(val string, c chan error) {
 	c <- nil
 	return
 }
+
+func GetAll() (storeArr []Store, err error) {
+	rows, err := con.Query("SELECT k, v FROM STORE")
+	if err != nil {
+		return nil, err
+	}
+	for rows.Next() {
+		var s Store
+		if err = rows.Scan(&s.Key, &s.Value); err != nil {
+			return nil, err
+		}
+		storeArr = append(storeArr, s)
+	}
+	return storeArr, nil
+}

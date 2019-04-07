@@ -46,3 +46,112 @@ func getHandler() http.HandlerFunc {
 		return
 	}
 }
+
+/**
+*@api {get} / get all values
+*@apiName get all values
+*@apiGroup all
+*@apiParam {string} key key of the value
+*@apiParamExample {json} request-example
+*{
+*    "key": "dsad"
+*}
+*@apiParamExample {json} response-example
+*
+*[
+*    {
+*        "key": "adsad",
+*        "value": "adjhsbdbaa"
+*    },
+*    {
+*        "key": "angad",
+*        "value": "sharmazasd"
+*    },
+*    {
+*        "key": "angadsd",
+*        "value": "sharma"
+*    },
+*    {
+*        "key": "da",
+*        "value": "angad"
+*    },
+*    {
+*        "key": "dasdsaasddasda",
+*        "value": "angad"
+*    },
+*    {
+*        "key": "dasdsaasddasdasad",
+*        "value": "angad"
+*    },
+*    {
+*        "key": "dsaasddasda",
+*        "value": "angad"
+*    },
+*    {
+*        "key": "dsadasda",
+*        "value": "angad"
+*    },
+*    {
+*        "key": "hip",
+*        "value": "hop"
+*    },
+*    {
+*        "key": "k2",
+*        "value": "v2"
+*    },
+*    {
+*        "key": "my",
+*        "value": "name"
+*    },
+*    {
+*        "key": "name",
+*        "value": "angad"
+*    },
+*    {
+*        "key": "name1",
+*        "value": "angad"
+*    },
+*    {
+*        "key": "name3",
+*        "value": "angad"
+*    },
+*    {
+*        "key": "name4",
+*        "value": "angad"
+*    },
+*    {
+*        "key": "name5",
+*        "value": "angad"
+*    },
+*    {
+*        "key": "name7",
+*        "value": "angad"
+*    },
+*    {
+*        "key": "new",
+*        "value": "name"
+*    },
+*    {
+*        "key": "ping",
+*        "value": "pong"
+*    }
+*]
+**/
+func getAll() http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+
+		data, err := model.GetAll()
+
+		// Handler errors
+		if err != nil {
+			json.NewEncoder(w).Encode(struct {
+				Err string
+			}{err.Error()})
+			return
+		}
+
+		// Output values
+		json.NewEncoder(w).Encode(data)
+		return
+	}
+}
